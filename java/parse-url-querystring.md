@@ -65,7 +65,7 @@ public class Parser {
 ```
 
 ## Solution 3
-Without using an external library 😟
+Without using an external library 😟  
 
 Java8:
 ```java
