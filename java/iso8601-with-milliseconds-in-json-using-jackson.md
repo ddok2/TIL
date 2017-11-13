@@ -1,4 +1,4 @@
-# SO8601 with milliseconds in json using Jackson
+# ISO8601 with milliseconds in json using Jackson
 
 ## Assignment
 ```java
