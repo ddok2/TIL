@@ -39,6 +39,7 @@ app.disabled('x-powered-by');
 - command injection
 - SQL injection
 - stored cross-site scripting
+
 위 항목을 피하기 위해서 사용자 입력을 유효성검사를 해야한다.
 사용자 유효성 검사하기에 좋은 라이브러리는 [Joi](https://www.npmjs.com/package/joi)이다.
 
@@ -55,11 +56,17 @@ const schema = Joi.object().keys({
 }).with('username', 'birthyear').without('password', 'access_token');
  
 // Return result.
-const result = Joi.validate({ username: 'abc', birthyear: 1994 }, schema);
+const result = Joi.validate({ 
+        username: 'abc', 
+        birthyear: 1994 
+    }, schema);
 // result.error === null -> valid
  
 // You can also pass a callback which will be called synchronously with the validation result.
-Joi.validate({ username: 'abc', birthyear: 1994 }, schema, function (err, value) { });  // err === null -> valid
+Joi.validate({ 
+        username: 'abc', 
+        birthyear: 1994 
+    }, schema, function (err, value) { });  // err === null -> valid
 ```
 
 계속 추가 예정..
