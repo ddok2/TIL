@@ -18,8 +18,8 @@
 - [frameguard](https://github.com/helmetjs/frameguard)는 X-Frame-Options 헤더를 설정하여 clickjacking에 대한 보호를 제공한다.
 - [xssFilter](https://github.com/helmetjs/x-xss-protection)는 X-XSS-Protection을 설정하여 대부분의 최신 웹 브라우저에서 XSS(Cross-site scripting) 필터를 사용하도록 한다.
 
-```npm
-npm i helmet -S
+```
+$ npm i helmet -S
 ```
 이후 코드에서 Helmet을 사용하는 방법은 다음과 같다.
 ```javascript
@@ -69,4 +69,108 @@ Joi.validate({
     }, schema, function (err, value) { });  // err === null -> valid
 ```
 
-계속 추가 예정..
+## Secure Coding Style
+### Do not use ```eval()```
+
+Eval은 애플리케이션에 코드 인젝션 공격을 가능하게 한다. 이를 사용하려고 하지마라.
+
+```eval()```뿐만 아니라 아래의 표현도 피해야한다. 아래의 표현은 백그라운드로 ```eval()```를 사용한다.
+
+- ```setInterval(String, 2)```
+- ```setTimeout(String, 2)```
+- ```new Function(String)```
+
+### Always use ```use strict;```
+```use strict;```를 사용하면 자바스크립트의 "변종"을 허용하지 않게 한다. 또한 몇몇 암묵적인 에러들을 제거해주고 에러로그를 throw한다.
+```javascript
+'use strict';
+
+const sung = {a: 1, b: 2};
+```
+
+### Set cookie scope
+쿠키로 인해 앱이 악용에 노출되지 않도록 하기 위해 기본 세션 쿠키 이름을 사용하지 말고 쿠키 보안 옵션을 적절히 설정한다.
+
+#### 기본 세션 쿠키 이름을 사용하지 않음
+기본 세션 쿠키 이름을 사용하면 앱을 공격에 노출시킬 수 있다. 
+
+이로 인해 제기되는 보안 문제는 X-Powered-By와 유사하며, 잠재적인 공격자는 이를 이용해 서버의 지문을 채취한 후 이에 따라 공격 대상을 설정할 수 있다.
+
+```javascript
+const session = require('express-session');
+
+app.set('trust proxy', 1); // trust first proxy
+app.use(session({
+    secret: 's3Cur3',
+    name: 'sessionId'
+}));
+
+```
+
+#### 쿠키 보안 옵션 설정
+다음과 같은 쿠키 옵션을 설정하여 보안을 강화할 필요가 있다.
+
+- secure - 브라우저가 HTTPS를 통해서만 쿠키를 전송하도록 한다.
+- httpOnly - 쿠키가 클라이언트 JavaScript가 아닌 HTTP(S)를 통해서만 전송되도록 하며, 이를 통해 XSS(Cross-site scripting) 공격으로부터 보호할 수 있다.
+- domain - 쿠키의 도메인을 표시하고 URL이 요청되고 있는 서버의 도메인에 대해 비교할 때 사용한다. 두 도메인이 일치하는 경우에는 그 다음으로 경로 속성을 확인해라.
+- path - 쿠키의 경로를 표시한다. 요청 경로에 대해 비교할 때 사용하며 이 경로와 도메인이 일치하는 경우에는 요청되고 있는 쿠키를 전송한다.
+- expires - 지속적 쿠키에 대한 만기 날짜를 설정하는 데 사용된다.
+
+```javascript
+const session = require('cookie-session');
+const express = require('express');
+const app = express();
+
+const expiryDate = new Date( Date.now() + 60 * 60 * 1000 ); // 1 hour
+
+app.use(session({
+    name: 'session',
+    keys: ['key1', 'key2'],
+    cookie: { 
+        secure: true,
+        httpOnly: true,
+        domain: 'example.com',
+        path: 'foo/bar',
+        expires: expiryDate
+          }
+    })
+);
+
+```
+
+### Audit your modules with the Node Security Platform 
+[nsp](https://www.npmjs.com/package/nsp)는 Node Security Platform의 주요 커맨드라인 인터페이스이다. 
+nsp는 취약한 모듈들을 점검하기 위해 package.json 파일 혹은 npm-shirnkwrap.json 파일을 NSP API를 통해 감시한다.
+
+```
+$ npm i nsp -g
+
+# From inside your project directory
+
+$ nsp check
+```
+유효성 검증을 위한 npm-shrinkwrap.json 파일을 [nodesecurity.io](https://nodesecurity.io/)에 제출하려면 다음과 같은 명령을 사용한다.
+```
+$ nsp audit-shrinkwrap
+```
+유효성 검증을 위한 package.json 파일을 [nodesecurity.io](https://nodesecurity.io/)에 제출하려면 다음과 같은 명령을 사용한다.
+```
+$ nsp audit-package
+```
+
+### Look for vulnerabilities with [Retire.js](https://github.com/RetireJS/retire.js)
+[Retire.js](https://github.com/RetireJS/retire.js)는 사용하고 있는 모듈 버전들에 대해 알려진 취약점을 탐지해주기 위한 모듈이다.
+
+```
+$ npm i retire -g
+```
+retire 명령으로 실행하면 node_modules 디렉토리내의 모듈들의 취약점을 찾을 수 있다.
+
+(또한 참고로 retire.js는 node_modules 외에 프론트엔드 라이브러리에서도 잘 작동한다.)
+
+
+
+#### 출처
+- [Node.js Security Overview (17.10.12)](https://nemethgergely.com/nodejs-security-overview/)
+- [Production Best Practices: Security](http://expressjs.com/en/advanced/best-practice-security.html)
+- [Node.js Security Tutorial](https://blog.risingstack.com/node-hero-node-js-security-tutorial/)
