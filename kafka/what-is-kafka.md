@@ -9,9 +9,10 @@
 
 - [Apache Kafka® is a distributed streaming platform](https://kafka.apache.org/intro)
 - 말 그대로 `분산 스트리밍 플랫폼`, LinkedIn 에서 구직 + 채용 정보들을 한곳에서 처리(발행/구독)할수 있는 플랫폼으로 개발이 시작
-- 분산된 형태로 돌아가는 `publish-subscribe 방식` 메시지 교환 시스템 (Publish: 데이터를 생성, Subscribe: 해당 데이터를 읽어 소비)
+- 분산된 형태로 돌아가는 `publish-subscribe 방식` 메시지 교환 시스템 
+     > Publish: 데이터를 생성, Subscribe: 해당 데이터를 읽어 소비
 - 메시지를 기본적으로 메모리에 저장하는 기존 메시징 시스템과는 달리 메시지를 파일 시스템에 저장 
-  → 카프카 재시작으로 인한 메세지 유실 우려 감소
+     > 카프카 재시작으로 인한 메세지 유실 우려 감소
 
   
 ## Kafka가 무엇인가요? (2)
