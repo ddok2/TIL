@@ -25,3 +25,6 @@
 - 분산된 형태로 동작하는 changelog
     * Key 값에 할당된 Value 값들에 대한 변경 내역을 분산된 형태로 저장한다
     * 저장된 Key-Value 들을 분배한다.
+    
+    
+    ![](../images/kafka/kafka2.png)
