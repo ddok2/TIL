@@ -1,4 +1,4 @@
-![](../images/kafka/kafka-logo.png)
+![](images/kafka-logo.png)
 # Apache Kafka
 
 #### 목차
@@ -27,4 +27,4 @@
     * 저장된 Key-Value 들을 분배한다.
     
     
-    ![](../images/kafka/kafka2.png)
+    ![](images/kafka2.png) 
