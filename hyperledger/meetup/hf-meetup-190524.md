@@ -38,3 +38,6 @@
 ### 느낀점
 회사 업무 차원 이미 커스텀마이징을 해서 잘 알고 있지만,
 나도 발표하면 떨리겠지...
+
+나도 사진에 나왔다ㅋㅋ
+![](https://github.com/hlkug/meetup/blob/master/201905/images/UNADJUSTEDNONRAW_thumb_2be1.jpg)
