@@ -1,4 +1,5 @@
 # 📝 TIL (Today I learned)
+[![Blog](https://img.shields.io/badge/Blog-ddok2.github.io-green.svg)](https://ddok2.github.io/)
 Sung 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. [thoughtbot til](https://github.com/thoughtbot/til)
 
 ## 작성 규칙
