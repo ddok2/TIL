@@ -1,4 +1,3 @@
-const moment = require('moment')
 const sidebar = require('./category')
 
 const logo = 'https://avatars.githubusercontent.com/' +
@@ -14,7 +13,6 @@ module.exports = {
       { text: 'Repository', link: 'https://github.com/ddok2/TIL' },
     ],
     sidebar,
-    lastUpdated: 'Last Updated',
     smoothScroll: true,
   },
   base: '/TIL/',

@@ -9,7 +9,6 @@
     "build": "vuepress build"
   },
   "dependencies": {
-    "moment": "^2.29.1",
     "vuepress-plugin-sitemap": "^2.3.1"
   },
   "devDependencies": {
