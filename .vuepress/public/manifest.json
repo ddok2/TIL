@@ -1,0 +1,16 @@
+{
+  "name": "Sung's TIL",
+  "short_name": "sung",
+  "start_url": "/?utm_source=homescreen",
+  "icons": [
+    {
+      "src": "images/sung-opengraph-image.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#FFFFFF",
+  "display": "fullscreen",
+  "orientation": "portrait"
+}
