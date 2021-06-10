@@ -6,7 +6,7 @@
   "author": "Sungyub NA <darkerkorean@gmail.com>",
   "scripts": {
     "dev": "vuepress dev",
-    "build": "vuepress build dist"
+    "build": "vuepress build"
   },
   "dependencies": {
     "moment": "^2.29.1",

@@ -3,7 +3,6 @@ const sidebar = require('./category')
 
 const logo = 'https://avatars.githubusercontent.com/' +
   'u/7994231?s=400&u=f96731a6bf1792683b6438798d1421cb57999654&v=4'
-const tilUrl = 'https://github.com/ddok2/TIL'
 
 module.exports = {
   title: `SUNG.TIL`,
@@ -12,7 +11,7 @@ module.exports = {
     logo,
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Repository', link: tilUrl },
+      { text: 'Repository', link: 'https://github.com/ddok2/TIL' },
     ],
     sidebar,
     lastUpdated: 'Last Updated',
@@ -36,6 +35,6 @@ module.exports = {
     }],
     '@vuepress/back-to-top',
     ['@vuepress/pwa', { serviceWorker: true, updatePopup: true }],
-    ['sitemap', { hostname: tilUrl }],
+    // ['sitemap', { hostname: 'https://ddok2.github.io/til' }],
   ],
 }
