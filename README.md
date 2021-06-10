@@ -1,5 +1,6 @@
 # 📝 TIL (Today I learned)
 [![TIL](https://img.shields.io/badge/Blog-ddok2.github.io-green.svg)](https://ddok2.github.io/til)
+[![Auto release](https://github.com/ddok2/TIL/actions/workflows/release.yml/badge.svg)](https://github.com/ddok2/TIL/actions/workflows/release.yml)
 
 [Sung](https://github.com/ddok2) 은 오늘 새로 배운 것을 다음의 규칙으로 commit 합니다. [thoughtbot til](https://github.com/thoughtbot/til)
 
