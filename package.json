@@ -1,0 +1,21 @@
+{
+  "name": "til",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ddok2/TIL.git",
+  "author": "Sungyub NA <darkerkorean@gmail.com>",
+  "scripts": {
+    "dev": "vuepress dev",
+    "build": "vuepress build dist"
+  },
+  "dependencies": {
+    "moment": "^2.29.1",
+    "vuepress-plugin-sitemap": "^2.3.1"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.8.2",
+    "@vuepress/plugin-pwa": "^1.8.2",
+    "vuepress": "^1.8.2"
+  },
+  "license": "MIT"
+}
