@@ -26,15 +26,8 @@ module.exports = {
     lineNumbers: true,
   },
   plugins: [
-    [
-      '@vuepress/last-updated', {
-      transformer: (timestamp) => {
-        moment.locale('ko')
-        return moment(timestamp).fromNow()
-      },
-    }],
     '@vuepress/back-to-top',
     ['@vuepress/pwa', { serviceWorker: true, updatePopup: true }],
-    // ['sitemap', { hostname: 'https://ddok2.github.io/til' }],
+    ['sitemap', { hostname: 'https://ddok2.github.io/TIL' }],
   ],
 }
