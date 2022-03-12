@@ -7,6 +7,7 @@ const java = require('./java')
 const kafka = require('./kafka')
 const linux = require('./linux')
 const nodejs = require('./nodejs')
+const python = require('./python')
 
 module.exports = [
   '/',
@@ -19,4 +20,5 @@ module.exports = [
   kafka,
   linux,
   nodejs,
+  python,
 ]
