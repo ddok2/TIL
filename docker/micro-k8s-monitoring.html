@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>micro k8s Monitoring | SUNG.TIL</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/TIL/images/favicon.png">
+    <link rel="manifest" href="/TIL/manifest.json">
+    <meta name="description" content="Today I learned">
+    
+    <link rel="preload" href="/TIL/assets/css/0.styles.8be3c028.css" as="style"><link rel="preload" href="/TIL/assets/js/app.c35cbdb2.js" as="script"><link rel="preload" href="/TIL/assets/js/2.9115f16e.js" as="script"><link rel="preload" href="/TIL/assets/js/29.517d466d.js" as="script"><link rel="preload" href="/TIL/assets/js/6.d38a8538.js" as="script"><link rel="prefetch" href="/TIL/assets/js/10.c0f429db.js"><link rel="prefetch" href="/TIL/assets/js/11.64694bce.js"><link rel="prefetch" href="/TIL/assets/js/12.d46c80ec.js"><link rel="prefetch" href="/TIL/assets/js/13.85b9affa.js"><link rel="prefetch" href="/TIL/assets/js/14.047d2656.js"><link rel="prefetch" href="/TIL/assets/js/15.60fe969c.js"><link rel="prefetch" href="/TIL/assets/js/16.2c67b97b.js"><link rel="prefetch" href="/TIL/assets/js/17.c5e1e5c2.js"><link rel="prefetch" href="/TIL/assets/js/18.9453e1b6.js"><link rel="prefetch" href="/TIL/assets/js/19.54fb7c8d.js"><link rel="prefetch" href="/TIL/assets/js/20.efc4d22f.js"><link rel="prefetch" href="/TIL/assets/js/21.28344926.js"><link rel="prefetch" href="/TIL/assets/js/22.e8567537.js"><link rel="prefetch" href="/TIL/assets/js/23.65110134.js"><link rel="prefetch" href="/TIL/assets/js/24.fbcd1f5c.js"><link rel="prefetch" href="/TIL/assets/js/25.257dccb8.js"><link rel="prefetch" href="/TIL/assets/js/26.aae6cd74.js"><link rel="prefetch" href="/TIL/assets/js/27.0a8fc019.js"><link rel="prefetch" href="/TIL/assets/js/28.d6da3190.js"><link rel="prefetch" href="/TIL/assets/js/3.08f76ec8.js"><link rel="prefetch" href="/TIL/assets/js/30.22c7d497.js"><link rel="prefetch" href="/TIL/assets/js/31.ed8d2458.js"><link rel="prefetch" href="/TIL/assets/js/32.6d0b506e.js"><link rel="prefetch" href="/TIL/assets/js/33.f4c0d84a.js"><link rel="prefetch" href="/TIL/assets/js/34.c617d655.js"><link rel="prefetch" href="/TIL/assets/js/35.2d57abba.js"><link rel="prefetch" href="/TIL/assets/js/36.aee820ad.js"><link rel="prefetch" href="/TIL/assets/js/37.2699894f.js"><link rel="prefetch" href="/TIL/assets/js/38.e99ac8d0.js"><link rel="prefetch" href="/TIL/assets/js/39.ef8422f5.js"><link rel="prefetch" href="/TIL/assets/js/4.459b579b.js"><link rel="prefetch" href="/TIL/assets/js/40.176644d6.js"><link rel="prefetch" href="/TIL/assets/js/41.cd4ebc1e.js"><link rel="prefetch" href="/TIL/assets/js/42.9eea1987.js"><link rel="prefetch" href="/TIL/assets/js/43.a71a7429.js"><link rel="prefetch" href="/TIL/assets/js/44.77102074.js"><link rel="prefetch" href="/TIL/assets/js/45.76909bfa.js"><link rel="prefetch" href="/TIL/assets/js/46.bcdeeb2b.js"><link rel="prefetch" href="/TIL/assets/js/47.ba5927dc.js"><link rel="prefetch" href="/TIL/assets/js/48.b0215841.js"><link rel="prefetch" href="/TIL/assets/js/49.a499afe5.js"><link rel="prefetch" href="/TIL/assets/js/5.10b62102.js"><link rel="prefetch" href="/TIL/assets/js/50.bcb212e3.js"><link rel="prefetch" href="/TIL/assets/js/51.96c72c2c.js"><link rel="prefetch" href="/TIL/assets/js/52.f1a4de87.js"><link rel="prefetch" href="/TIL/assets/js/53.5d4b2a68.js"><link rel="prefetch" href="/TIL/assets/js/54.0173408c.js"><link rel="prefetch" href="/TIL/assets/js/55.c1602343.js"><link rel="prefetch" href="/TIL/assets/js/56.d5c45899.js"><link rel="prefetch" href="/TIL/assets/js/57.c1b8b798.js"><link rel="prefetch" href="/TIL/assets/js/58.2f9adfd9.js"><link rel="prefetch" href="/TIL/assets/js/59.f2bb3b43.js"><link rel="prefetch" href="/TIL/assets/js/60.b421a529.js"><link rel="prefetch" href="/TIL/assets/js/61.66596efa.js"><link rel="prefetch" href="/TIL/assets/js/62.dd5df38d.js"><link rel="prefetch" href="/TIL/assets/js/63.7ac09ec2.js"><link rel="prefetch" href="/TIL/assets/js/7.aba6acd4.js"><link rel="prefetch" href="/TIL/assets/js/8.812fa4f9.js"><link rel="prefetch" href="/TIL/assets/js/9.5d745967.js">
+    <link rel="stylesheet" href="/TIL/assets/css/0.styles.8be3c028.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/TIL/" class="home-link router-link-active"><img src="https://avatars.githubusercontent.com/u/7994231?s=400&amp;u=f96731a6bf1792683b6438798d1421cb57999654&amp;v=4" alt="SUNG.TIL" class="logo"> <span class="site-name can-hide">SUNG.TIL</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/TIL/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="https://github.com/ddok2/TIL" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Repository
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/TIL/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="https://github.com/ddok2/TIL" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Repository
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/TIL/" aria-current="page" class="sidebar-link">📝 TIL (Today I learned)</a></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>architecture</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>hyperledger</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>blockchain</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>golang</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>docker</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/TIL/docker/docker-command.html" class="sidebar-link">Docker 명령어 정리</a></li><li><a href="/TIL/docker/install-kubeadm.html" class="sidebar-link">kubeadm 설치하기</a></li><li><a href="/TIL/docker/micro-k8s-monitoring.html" aria-current="page" class="active sidebar-link">micro k8s Monitoring</a></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>java</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>kafka</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>linux</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>nodejs</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>python</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>db</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="micro-k8s-monitoring"><a href="#micro-k8s-monitoring" class="header-anchor">#</a> micro k8s Monitoring</h1> <div class="language-shell line-numbers-mode"><pre class="language-shell"><code><span class="token comment"># check add-on</span>
+$ microk8s.status
+microk8s is running
+addons:
+cilium: disabled
+dashboard: enabled
+dns: enabled
+fluentd: disabled
+gpu: disabled
+helm3: disabled
+helm: disabled
+ingress: enabled
+istio: enabled
+jaeger: disabled
+juju: disabled
+knative: disabled
+kubeflow: disabled
+linkerd: disabled
+metallb: disabled
+metrics-server: disabled
+prometheus: enabled
+rbac: disabled
+registry: enabled
+storage: enabled
+
+<span class="token comment"># enable prometheus</span>
+$ microk8s.enable prometheus
+Enabling Prometheus
+namespace/monitoring created
+<span class="token punctuation">..</span>.
+
+<span class="token comment"># check</span>
+$ kubectl get pods -n monitoring
+NAME                                  READY   STATUS    RESTARTS   AGE
+alertmanager-main-0                   <span class="token number">2</span>/2     Running   <span class="token number">0</span>          41m
+grafana-58dc7468d7-mlfp6              <span class="token number">1</span>/1     Running   <span class="token number">0</span>          41m
+kube-state-metrics-78b46c84d8-nnnm8   <span class="token number">3</span>/3     Running   <span class="token number">0</span>          41m
+node-exporter-9clws                   <span class="token number">2</span>/2     Running   <span class="token number">0</span>          41m
+node-exporter-dzfmz                   <span class="token number">2</span>/2     Running   <span class="token number">0</span>          41m
+node-exporter-flqpj                   <span class="token number">2</span>/2     Running   <span class="token number">0</span>          41m
+node-exporter-msvrj                   <span class="token number">2</span>/2     Running   <span class="token number">0</span>          41m
+node-exporter-rwhz9                   <span class="token number">2</span>/2     Running   <span class="token number">0</span>          41m
+prometheus-adapter-5cd5798d96-6djqc   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          41m
+prometheus-k8s-0                      <span class="token number">3</span>/3     Running   <span class="token number">1</span>          40m
+prometheus-operator-99dccdc56-6m4xk   <span class="token number">1</span>/1     Running   <span class="token number">0</span>          41m
+
+
+<span class="token comment">## Grafana</span>
+$ kubectl -n monitoring port-forward --address <span class="token number">0.0</span>.0.0 <span class="token variable"><span class="token variable">$(</span>kubectl -n monitoring get pod -l <span class="token assign-left variable">app</span><span class="token operator">=</span>grafana -o <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">'{.items[0].metadata.name}'</span><span class="token variable">)</span></span> <span class="token number">4000</span>:3000 <span class="token operator">&amp;</span>
+
+$ <span class="token function">nohup</span> /var/lib/snapd/snap/bin/microk8s.kubectl -n monitoring port-forward --address <span class="token number">0.0</span>.0.0 <span class="token variable"><span class="token variable">$(</span>kubectl -n monitoring get pod -l <span class="token assign-left variable">app</span><span class="token operator">=</span>grafana -o <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">'{.items[0].metadata.name}'</span><span class="token variable">)</span></span> <span class="token number">4000</span>:3000 <span class="token operator">&amp;</span>
+
+<span class="token comment">## Prometheus</span>
+$ kubectl -n monitoring port-forward --address <span class="token number">0.0</span>.0.0 <span class="token variable"><span class="token variable">$(</span>kubectl -n monitoring get pod -l <span class="token assign-left variable">app</span><span class="token operator">=</span>prometheus -o <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">'{.items[0].metadata.name}'</span><span class="token variable">)</span></span> <span class="token number">9090</span>:9090
+
+$ <span class="token function">nohup</span> /var/lib/snapd/snap/bin/microk8s.kubectl -n monitoring port-forward --address <span class="token number">0.0</span>.0.0 <span class="token variable"><span class="token variable">$(</span>kubectl -n monitoring get pod -l <span class="token assign-left variable">app</span><span class="token operator">=</span>prometheus -o <span class="token assign-left variable">jsonpath</span><span class="token operator">=</span><span class="token string">'{.items[0].metadata.name}'</span><span class="token variable">)</span></span> <span class="token number">9090</span>:9090 <span class="token operator">&amp;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/TIL/docker/install-kubeadm.html" class="prev">
+        kubeadm 설치하기
+      </a></span> <span class="next"><a href="/TIL/java/iso8601-with-milliseconds-in-json-using-jackson.html">
+        ISO8601 with milliseconds in json using Jackson
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/TIL/assets/js/app.c35cbdb2.js" defer></script><script src="/TIL/assets/js/2.9115f16e.js" defer></script><script src="/TIL/assets/js/29.517d466d.js" defer></script><script src="/TIL/assets/js/6.d38a8538.js" defer></script>
+  </body>
+</html>
