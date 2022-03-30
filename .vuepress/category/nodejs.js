@@ -11,6 +11,7 @@ const children = [
   'nodejs-security-overview',
   'nvm-version-control',
   'top10-common-mistakes',
+  'npm-config-set',
 ].map(p => `${url}/${p}`)
 
 const v4Child = [
